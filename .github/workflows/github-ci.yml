@@ -20,5 +20,14 @@ jobs:
           components: clippy, rustfmt
           overwrite: true
 
+      - name: Cargo build
+        run: make build
+
+      - name: Cargo run
+        run: make run
+
+      - name: Cargo test
+        run: make test
+
       - name: Run Clippy
         run: make lint
