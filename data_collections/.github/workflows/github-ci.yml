@@ -11,14 +11,12 @@ jobs:
   steps:
     - name: Checkout code
       uses: actions/checkout@v4
-
     - name: Install Rust
       uses: actions-rs/toolchain@v1 # check if we shall use v4
-        with:
-          toolchain: stable
-          profile: minimal
-          components: clippy, rustfmt
-          overwrite: true
-    
+      with:
+        toolchain: stable
+        profile: minimal
+        components: clippy, rustfmt
+        overwrite: true
     - name: Run Clippy
       run: make lint
