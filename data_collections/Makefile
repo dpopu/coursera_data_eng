@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-.PHONY :help
+.PHONY: help
 
 help: 
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort |awk 'BEGIN {FS = ":.*?##"}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
@@ -17,8 +17,11 @@ lint: ## Lint the project using clippy
 run: ## Run the project using Cargo
 	cargo run
 
-fmt: ## Formats the project code using cargo formating
+format: ## Formats the project code using cargo formating
 	cargo fmt
 
 test: ## Run all tests (unit & integration rust tests)
 	cargo test
+
+all: format lint test run ## Execute most important steps
+	
